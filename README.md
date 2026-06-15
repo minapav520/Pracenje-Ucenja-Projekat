@@ -26,3 +26,6 @@ The application is engineered as a **central administrative panel for teachers**
 * **Form Validation & Security:** Safe and validated data entry on the backend to prevent empty inputs or incorrect data types from corrupting the database.
 
 ---
+
+## 📸 Application Preview
+![Prikaz aplikacije](izgledStranice.jpg)
