@@ -111,39 +111,39 @@ $ukupno_sati = round($ukupno_minuta / 60, 1);
         </div>
     </nav>
 
-    <div class="container">
-        <div class="quote-box">
+    <div class="container px-3 px-sm-0">
+        <div class="quote-box mx-1">
             "Small steps every day lead to big results." 🤍
         </div>
 
-        <div class="row mb-2">
-            <div class="col-md-4">
-                <div class="card stat-card">
+        <div class="row mb-2 g-3">
+            <div class="col-12 col-md-4">
+                <div class="card stat-card h-100">
                     <h5>Ukupno učenika</h5>
                     <h3><?php echo $ukupno_ucenika; ?></h3>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card stat-card" style="border-left-color: #d1b2b5;">
+            <div class="col-12 col-md-4">
+                <div class="card stat-card h-100" style="border-left-color: #d1b2b5;">
                     <h5>Aktivni predmeti</h5>
                     <h3><?php echo $ukupno_predmeta; ?></h3>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card stat-card" style="border-left-color: #e8dedf;">
+            <div class="col-12 col-md-4">
+                <div class="card stat-card h-100" style="border-left-color: #e8dedf;">
                     <h5>Sati učenja</h5>
                     <h3><?php echo $ukupno_sati; ?> h</h3>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-4">
+        <div class="row g-4">
+            <div class="col-12 col-lg-4">
                 <div class="card">
                     <div class="card-header-custom">
                         <?php echo $edit_mod ? "✏️ Izmeni napredak" : "✍️ Unesi napredak"; ?>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body p-3 p-sm-4">
                         <form action="dashboard.php" method="POST">
                             <input type="hidden" name="zapis_id" value="<?php echo $edit_id; ?>">
                             
@@ -185,13 +185,13 @@ $ukupno_sati = round($ukupno_minuta / 60, 1);
                 </div>
             </div>
 
-            <div class="col-md-8">
+            <div class="col-12 col-lg-8">
                 <div class="card p-3 mb-3">
-                    <form action="dashboard.php" method="GET" class="row g-2 align-items-center">
-                        <div class="col-auto">
+                    <form action="dashboard.php" method="GET" class="row g-3 align-items-center">
+                        <div class="col-12 col-sm-auto">
                             <label class="col-form-label text-muted" style="font-size: 0.9rem;">🔍 Filtriraj po učeniku:</label>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-12 col-sm-6 col-md-5">
                             <select name="filter_ucenik" class="form-select form-select-sm" onchange="this.form.submit()">
                                 <option value="">Prikaži sve učenike</option>
                                 <?php foreach ($svi_ucenici_za_filter as $ime_ucenika): ?>
@@ -202,8 +202,8 @@ $ukupno_sati = round($ukupno_minuta / 60, 1);
                             </select>
                         </div>
                         <?php if (!empty($izabrani_učenik)): ?>
-                            <div class="col-auto">
-                                <a href="dashboard.php" class="btn btn-sm btn-light" style="border-radius: 8px;">Poništi filter</a>
+                            <div class="col-12 col-sm-auto">
+                                <a href="dashboard.php" class="btn btn-sm btn-light w-100" style="border-radius: 8px;">Poništi filter</a>
                             </div>
                         <?php endif; ?>
                     </form>
@@ -226,13 +226,13 @@ $ukupno_sati = round($ukupno_minuta / 60, 1);
                             <tbody>
                                 <?php if (empty($prikaz_zapisa)): ?>
                                     <tr>
-                                        <td colspan="6" class="text-center text-muted">Nema zapisa za prikaz. 💕</td>
+                                        <td colspan="6" class="text-center text-muted p-4">Nema zapisa za prikaz. 💕</td>
                                     </tr>
                                 <?php else: ?>
                                     <?php foreach ($prikaz_zapisa as $zapis): ?>
                                         <tr>
-                                            <td><strong><?php echo htmlspecialchars($zapis['ucenik']); ?></strong></td>
-                                            <td><?php echo htmlspecialchars($zapis['predmet']); ?></td>
+                                            <td class="text-nowrap"><strong><?php echo htmlspecialchars($zapis['ucenik']); ?></strong></td>
+                                            <td class="text-nowrap"><?php echo htmlspecialchars($zapis['predmet']); ?></td>
                                             <td><?php echo htmlspecialchars($zapis['zadatak']); ?></td>
                                             <td>
                                                 <?php if ($zapis['ocena']): ?>
@@ -241,8 +241,8 @@ $ukupno_sati = round($ukupno_minuta / 60, 1);
                                                     <span class="text-muted">-</span>
                                                 <?php endif; ?>
                                             </td>
-                                            <td><?php echo $zapis['vreme']; ?> min</td>
-                                            <td>
+                                            <td class="text-nowrap"><?php echo $zapis['vreme']; ?> min</td>
+                                            <td class="text-nowrap">
                                                 <a href="dashboard.php?izmeni=<?php echo $zapis['id']; ?>" class="btn btn-sm btn-link text-muted p-0 me-2" style="text-decoration: none;">✏️</a>
                                                 <a href="dashboard.php?obrisi=<?php echo $zapis['id']; ?>" class="btn btn-sm btn-link text-danger p-0" onclick="return confirm('Da li ste sigurni da želite da obrišete ovaj zapis?')" style="text-decoration: none;">❌</a>
                                             </td>
